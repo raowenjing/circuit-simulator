@@ -1,63 +1,58 @@
 import sys
 
-# maximum number of wires, including both input, output and intermediate wires
-MAX_LINES = 10000
-
 # writes the type of gate and saves the children of each wire
 def output_nodes():
     for input in inputlist:
+        # Checks if line is empty, if so continues
         if input == "\n":
             continue
 
+        # checks if line is commented out
         if input.startswith("#"):
             continue
 
+        # processes input wires of input, adds input wires into a list
         if input.startswith("INPUT"):
             index = input.find(")")
             intValue = int(input[6:index])
-            keyValue[intValue] = "input_" + str(intValue)
             inputList.append(intValue)
             f.write("    ")
-            f.write("input_")
             f.write(str(intValue))
-            f.write (" [color = brown, shape = invhouse]")
+            f.write (" [color = brown]")
             f.write ("\n")
 
-
+        # processes output wires of output, adds output wires into a list
         elif input.startswith("OUTPUT"):
             index = input.find(")")
             outputList.append(int(input[7:index]))
 
+        # processes all the logic gates and creates nodes for intermediate wires
         else:
             index = input.find(" = ")
-            nodeOperation = -1;
             nodeIndex = int(input[0:index])
             f.write("    ")
-
             strVal = ""
+            f.write(str(nodeIndex))
+            f.write(" [fontcolor = white, label = \"\", color = black")
+
             if input.find("NAND") != -1:
-                strVal = "NAND_"
-            elif input.find("OR") != -1:
-                strVal = "OR_"
+                f.write(", image = \"nand.png\"]")
+            elif input.find("NOR") != -1:
+                f.write(", image = \"nor.png\"]")
             elif input.find("AND") != -1:
-                strVal = "AND_"
+                f.write(", image = \"and.png\"]")
             elif input.find("NOT") != -1:
-                strVal = "NOT_"
-
-            f.write(strVal)
-
-            if outputList.count(nodeIndex) != 0:
-                f.write(str(nodeIndex))
-                f.write(" [color = green, shape = invtriangle]")
-                keyValue[nodeIndex] = strVal + str(nodeIndex)
+                f.write(", image = \"not.png\"]")
+            elif input.find("XOR") != -1:
+                f.write(", image = \"xor.png\"]")
+            elif input.find("OR") != -1:
+                f.write(", image = \"or.png\"]")
             else:
-                nodeOperation = strVal
-                f.write(str(nodeIndex))
-                f.write(" [color = yellow]")
-                keyValue[nodeIndex] = strVal + str(nodeIndex)
+                f.write(", image = \"buff.png\"]")
 
             f.write("\n")
 
+            # creates a list of children nodes and appends it into masterlist of child nodes
             children = []
             children.append(nodeIndex)
             index = input.find("(") + 1
@@ -75,13 +70,12 @@ def output_nodes():
 
 # main function starts
 # get input from command line
-if len(sys.argv) != 4:
-    print("USAGE: python convertDotLanguage.py  CIRCUIT_FILE  OUTPUT_FILE MAX_LINES")
+if len(sys.argv) != 3:
+    print("USAGE: python convertDotLanguage.py  CIRCUIT_FILE  OUTPUT_FILE")
     print (len(sys.argv))
     exit()
 circuitFile = sys.argv[1]
 outputFile = sys.argv[2]
-MAX_LINES = int(sys.argv[3])
 
 # Step 1: read circuit file
 file1 = open(circuitFile,"r")
@@ -90,22 +84,29 @@ file1.close()
 outputList = []
 inputList = []
 listOfChildren = []
-keyValue = ["space"] * MAX_LINES
+#keyValue = ["space"] * MAX_LINES
 
 # Step 2: generate output file
 f = open(outputFile, "w")
-f.write("digraph G {")
-f.write("\n")
-f.write("\n")
-f.write ("    ")
-f.write("node [style = filled]")
-f.write("\n")
-f.write("\n")
+f.write("digraph G {\n\n")
+f.write("    rankdir = LR\n")
+f.write("    node [style = unfilled, imagescale = true, shape = square]\n")
+f.write("    graph [splines = ortho]\n")
+f.write("    edge [arrowtail = none]\n\n")
 
 # processes the data and writes all the nodes into the output file
 output_nodes()
 
-f.write("\n")
+f.write ("\n")
+f.write("    {rank = source")
+
+for i in inputList:
+    f.write("; ")
+    f.write(str(i))
+
+f.write("}\n")
+
+
 
 # write the relationship between nodes to the output file
 for i in listOfChildren:
@@ -114,10 +115,25 @@ for i in listOfChildren:
         if j == 0:
             continue
         f.write("    ")
-        f.write(str(keyValue[int(i[j])]))
+        f.write(str(int(i[j])))
+        #f.write(str(keyValue[int(i[j])]))
         f.write (" -> ")
-        f.write(str(keyValue[i[0]]))
+        f.write(str(i[0]))
         f.write("\n")
 
-f.write ("}")
+for i in outputList:
+    f.write ("    ")
+    f.write (str(i))
+    f.write (" -> O")
+    f.write (str(i))
+    f.write("\n")
+
+f.write("\n    {rank = sink")
+
+for i in outputList:
+    f.write("; O")
+    f.write(str(i))
+
+f.write ("} \n }")
+
 f.close()
