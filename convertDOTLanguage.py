@@ -36,19 +36,19 @@ def output_nodes():
             f.write(" [fontcolor = white, label = \"\", color = black")
 
             if input.find("NAND") != -1:
-                f.write(", image = \"nand.png\"]")
+                f.write(", image = \"./Gate_Image/nand.png\"]")
             elif input.find("NOR") != -1:
-                f.write(", image = \"nor.png\"]")
+                f.write(", image = \"./Gate_Image/nor.png\"]")
             elif input.find("AND") != -1:
-                f.write(", image = \"and.png\"]")
+                f.write(", image = \"./Gate_Image/and.png\"]")
             elif input.find("NOT") != -1:
-                f.write(", image = \"not.png\"]")
+                f.write(", image = \"./Gate_Image/not.png\"]")
             elif input.find("XOR") != -1:
-                f.write(", image = \"xor.png\"]")
+                f.write(", image = \"./Gate_Image/xor.png\"]")
             elif input.find("OR") != -1:
-                f.write(", image = \"or.png\"]")
+                f.write(", image = \"./Gate_Image/or.png\"]")
             else:
-                f.write(", image = \"buff.png\"]")
+                f.write(", image = \"./Gate_Image/buff.png\"]")
 
             f.write("\n")
 
@@ -90,7 +90,7 @@ listOfChildren = []
 f = open(outputFile, "w")
 f.write("digraph G {\n\n")
 f.write("    rankdir = LR\n")
-f.write("    node [style = unfilled, imagescale = true, shape = square]\n")
+f.write("    node [style = unfilled, imagescale = true, shape = box, fixedsize = true]\n")
 f.write("    graph [splines = ortho]\n")
 f.write("    edge [arrowtail = none]\n\n")
 
