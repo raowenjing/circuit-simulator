@@ -1,0 +1,4 @@
+Calculating values for input: 000  wire_w: 0   wire_x: 0   wire_y: 0   wire_z: 1   
+Calculating values for input: 010  wire_w: 0   wire_x: 0   wire_y: 1   wire_z: 1   
+Calculating values for input: 001  wire_w: 0   wire_x: 1   wire_y: 0   wire_z: 1   
+Calculating values for input: 100  wire_w: 0   wire_x: 0   wire_y: 1   wire_z: 0   
