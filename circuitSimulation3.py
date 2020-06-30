@@ -1,4 +1,5 @@
 from pprint import pprint
+import time
 
 # Class used to store information for a wire
 class Node(object):
@@ -242,6 +243,8 @@ for line in values:
             f.write(answer)
             f.write ("   ")
             print("------------------", objectDict[i].name, " ", answer)
+            pprint(objectDict)
+            askToContinue = input("Press a key to continue")
 
     print ("\n\n\n")
     f.write("\n")
