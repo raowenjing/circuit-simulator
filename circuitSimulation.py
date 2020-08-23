@@ -1,208 +1,178 @@
 # Class used to store information for a wire
 class Node(object):
-    def __init__(self, i, v, op, c, ii, io):
-        self.name = i
-        self.value = v
-        self.operator = op
-        self.children = c
-        self.is_input = ii
+    def __init__(self, i, v, op, inlist, ii, io):
+        self.name = i         # string
+        self.value = v        # char: '0', '1', 'U' for unknown
+        self.operator = op    # string such as "AND", "OR" etc
+        self.interms = []     # list of nodes (first as strings, then as nodes), each is a input wire to the gate
+        self.interm_names = inlist
+        self.is_input = ii    # boolean: true if this wire is a primary input of the circuit
+        self.is_output = io   # boolean: true if this wire is a primary output of the circuit
+    
+    def set_interms(self, interms):
+        self.interms = interms
+    
+    def set_output(self, io):
         self.is_output = io
-
-    def set_value (self, v):
-        self.value = v
-
-    def set_children(self, c):
-        self.children = c
-
-    def set_operator (self, op):
+    
+    def set_operator(self, op):
         self.operator = op
-
-    def set_input (self, ii):
-        self.is_input = ii
-
-    def set_output (self, io):
-        self.is_output = io
-
-    def __repr__(self):
-        return str(self.name)+ " " + str(self.value)
+    
+    def set_value(self, v):
+        self.value = v
+    
+    def __repr__(self):     # defines how print(node) should behave
+        nodevalue = self.value
+        
+        if self.is_input:
+            return f"node: {str(self.name[5:]):2s} = {str(nodevalue):10s}"
+        
+        interm_str = ""
+        interm_val_str = ""
+        for i in self.interms:
+            interm_str += str(i.name[5:])
+            interm_val_str += str(i.value)
+        
+        return f"node: {str(self.name[5:]):2s} = {str(nodevalue):10s} || is the output of {str(self.operator):7s}"\
+        f"gate with interms {interm_str} = {interm_val_str}"
+    
+    # Function that calculates value of the node based on its interm
+    def calculate_value(self):
+        for i in self.interms:
+            if i.value == "U":
+                return "U"
+    
+        if self.operator == "AND":
+            val = "1"
+            for i in self.interms:
+                if i.value == "0":
+                    val = "0"
+            self.value = val
+            return val
+elif self.operator == "OR":
+    val = "0"
+        for i in self.interms:
+            if i.value == '1':
+                val = "1"
+            self.value = val
+            return val
+        elif self.operator == "NAND":
+            flag = "1"
+            for i in self.interms:
+                if i.value == "0":
+                    flag = "0"
+            val = not flag
+            self.value = val
+            return val
+    elif self.operator == "NOT":
+        val = self.interms[0].value
+        self.value = str(1-int(val))
+        return val
+        elif self.operator == "XOR":
+            numberOf1 = 0
+            for i in self.interms:
+                if self.interms.value == "1":
+                    numberOf1 = numberOf1 + 1
+            val = numberOf1 % 2
+            val = str(val)
+            self.value = val
+            return val
+        elif self.operator == "XNOR":
+            numberOf1 = 0
+            for i in self.interms:
+                if self.interms.value == "1":
+                    numberOf1 = numberOf1 + 1
+            val = numberOf1 % 2
+            self.value = str(1-val)
+            return val
+elif self.operator == "NOR":
+    flag = "0"
+        for i in self.interms:
+            if i.value == "1":
+                flag = "1"
+            val = str(1-int(flag))
+            self.value = val
+            return val
 
 
 # Take a line from the circuit file which represents a gate operation and returns a node that stores the gate
+
 def process_gate(strVal):
-    #result wire, operation, input wires
-    index = strVal.find(" = ")
-    nodeIndex = str(strVal[0:index])
-    nodeOperator = 4
-    if strVal.find("NAND") != -1:
-        nodeOperator = "NAND"
-    elif strVal.find("OR") != -1:
-        nodeOperator = "OR"
-    elif strVal.find("AND") != -1:
-        nodeOperator = "AND"
-    elif strVal.find("NOT") != -1:
-        nodeOperator = "NOT"
-    else:
-        print("Invalid Operator")
-
+    # result wire, operation, input wires
+    name_end_idx = strVal.find(" = ")
+    node_name = str(strVal[0:name_end_idx])
+    op_start_idx = strVal.find("=") + 2
+    op_end_idx = strVal.find("(")
+    node_operator = strVal[op_start_idx:op_end_idx]
+    
     # store children in list
-    children = []
-    index = strVal.find("(") + 1
-    endvalue = strVal.find(")")
-
-    while index < endvalue:
-        indexen = strVal.find(",", index)
-        if indexen == -1:
-            children.append("wire_" + str(strVal[index:endvalue].strip()))
-            break
-        children.append("wire_"+str(strVal[index:indexen].strip()))
-        index = indexen + 1
-
-    curr_node = Node("wire_" + str(nodeIndex), -1, nodeOperator, children, False, False)
-    #print("creating ", "wire_" + str(nodeIndex))
+    interm_start_idx = strVal.find("(") + 1
+    end_position = strVal.find(")")
+    
+    temp_str = strVal[interm_start_idx:end_position]
+    
+    interm_name_list = temp_str.split(", ")
+    curr_node = Node("wire_" + node_name, "U", node_operator, interm_name_list, False, False)
     return curr_node
+
 
 # Create trees from input file, store all the input wires and output wires in a list
 # Creates a new node for each gate operation
-def construct_tree():
-    outputNodes = []
-    for input in input_file_values:
-        if input == "\n":
+def construct_nodelist():
+    o_name_list = []
+    
+    for fileline in input_file_values:
+        if fileline == "\n":
             continue
-
-        if input.startswith("#"):
+        
+        if fileline.startswith("#"):
             continue
-
-        if input.startswith("INPUT"):
-            index = input.find(")")
-            intValue = str(input[6:index])
+        
+        if fileline.startswith("INPUT"):
+            index = fileline.find(")")
+            intValue = str(fileline[6:index])
             name = "wire_" + str(intValue)
-            print ("creating input node ", name)
-            node_list.append(Node(name, "leaf", -1, [], True, False))
-            list_for_index.append(name)
-
-        elif input.startswith("OUTPUT"):
-            index = input.find(")")
-            name = "wire_" + str(input[7:index])
-            outputNodes.append(name)
-            node_list.append(Node(name, "output", -1, [], False, True))
-            list_for_index.append(name)
-
+            node_list.append(Node(name, "U", "interms", [], True, False))
+        
+        
+        elif fileline.startswith("OUTPUT"):
+            index = fileline.find(")")
+            name = "wire_" + str(fileline[7:index])
+            o_name_list.append(name)
+        
+        
         else:
-            new_node = process_gate(input)
-            if str(new_node.name) in outputNodes:
-                index = list_for_index.index(new_node.name)
-                node_list[index].set_children(new_node.children)
-                node_list[index].set_operator(new_node.operator)
-            else:
-                print ("creating node ", new_node.name)
-                node_list.append(new_node)
-                list_for_index.append(new_node.name)
+            new_node = process_gate(fileline)
+            node_list.append(new_node)
 
-    # Convert the children from a list of names to a list of references
-    for i in node_list:
-        for j in range(len(i.children)):
-            name = i.children[j]
-            listIndex = list_for_index.index(name)
-            i.children[j] = node_list[listIndex]
+for i in node_list:
+    if i.name in o_name_list:
+        i.set_output(True)
+    
+    
+    # Convert the interm from a list of names (string) to a list of references (nodes)
+    for node in node_list:
+        for j in range(len(node.interm_names)):
+            interm_name = "wire_" + node.interm_names[j]
+            for interm_node in node_list:
+                if interm_node.name == interm_name:
+                    node.interms.append(interm_node)
 
-
-# Helper function simulating the AND logic gate
-def simulate_and(children):
-    for i in children:
-        if i.value == 0:
-            return 0
-    return 1
-
-# Helper function simulating the OR logic gate
-def simulate_or(children):
-    for i in children:
-        if i.value == 1:
-            return 1
-    return 0
-
-# Helper function simulating the NAND logic gate
-def simulate_nand(children):
-    if simulate_and(children) == 0:
-        return 1
-    else:
-        return 0
-
-# Helper function simulating the NOT logic gate
-def simulate_not(children):
-    if children[0].value == 0:
-        return 1
-    else:
-        return 0
-
-def simulate_nor(children):
-    if simulate_or(children) == 0:
-        return 1
-    else:
-        return 0
-
-def simulate_xor(children):
-    numberOf1 = 0
-    for i in children:
-        if children.value == 1:
-            numberOf1 = numberOf1 + 1
-    if numberOf1 == 1:
-        return 1
-    else:
-        return 0
-
-def simulate_xnor(children):
-    if simulate_xor(children) == 0:
-        return 1
-    else:
-        return 0
-
-# Function that calculates value of the node based on its children
-def calculate_value(node):
-    for i in node.children:
-        if i.value == -1:
-            return -1
-
-    if node.operator == "AND":
-        val = simulate_and(node.children)
-        node.set_value(int(val))
-        return val
-    elif node.operator == "OR":
-        val = simulate_or(node.children)
-        node.set_value(int(val))
-        return val
-    elif node.operator == "NAND":
-        val = simulate_nand(node.children)
-        node.set_value(int(val))
-        return val
-    elif node.operator == "NOT":
-        val = simulate_not(node.children)
-        node.set_value(int(val))
-        return val
-    elif node.operator == "XOR":
-        val = simulate_xor(node.children)
-        node.set_value(int(val))
-        return val
-    elif node.operator == "XNOR":
-        val = simulate_xnor(node.children)
-        node.set_value(int(val))
-        return val
-    elif node.operator == "NOR":
-        val = simulate_nor(node.children)
-        node.set_value(int(val))
-        return val
 
 # Helper function to clear values in tree
 def clear_values():
     for i in node_list:
-        i.set_value(-1)
+        i.set_value("U")
 
 
 # Main function starts
 
 # Step 1: get circuit file name from command line
-wantToInputCircuitFile = str(input("The default circuit bench file is circuit.bench, type 1 to change the file.\n"))
-if wantToInputCircuitFile == "1":
-    circuitFile = str(input ("Please input file name\n"))
+wantToInputCircuitFile = str(
+                             input("The default circuit bench file is circuit.bench, type a file name if you want to change it.\n"))
+
+if len(wantToInputCircuitFile) != 0:
+    circuitFile = wantToInputCircuitFile
     try:
         f = open(circuitFile)
         f.close()
@@ -212,44 +182,77 @@ if wantToInputCircuitFile == "1":
 else:
     circuitFile = "circuit.bench"
 
-# Constructing the circuit tree
+# Constructing the circuit netlist
 file1 = open(circuitFile, "r")
 input_file_values = file1.readlines()
 file1.close()
 node_list = []
-list_for_index = []
-construct_tree()
+construct_nodelist()
+# printing list of constructed nodes
+for i in node_list:
+    print (i)
 
-line = input("please input a value (return to exit):")
+print ("---------------")
+
+line = input("please input a value (return to exit):\n")
 
 while len(line) != 0:
     clear_values()
-    print ("currently running: ", line.strip())
-
-    strlength = len(line) - 1
-    if line[strlength] == "\n":
-        strlength = strlength - 1
-
+    print("currently running: ", line.strip())
+    
+    strindex = 0
+    
     # Set value of input node
     for i in node_list:
         if i.is_input:
-            i.set_value(int(line[strlength]))
-            print (i.name, " set value to ", int(line[strlength]))
-            strlength = strlength-1
+            i.set_value(line[strindex])
+            print(i.name[5:], " set value to ", line[strindex])
+            strindex = strindex + 1
 
-    # Compute value of the gate nodes
-    complete = False
+# Compute value of the gate nodes
+complete = False
     while complete == False:
         complete = True
         for i in node_list:
-            val = calculate_value(i)
-            if val == -1:
+            val = 0
+            if i.value == "U":
+                val = i.calculate_value()
+            # print(i.name, val)
+            
+            print (i)
+            
+            if val == "U":
                 complete = False
 
-    # Print the value of the output nodes
+
+print("\n--- value of output nodes ---")
+# Print the value of the output nodes
+print("input [", end="")
+    curlen = 0
+    for i in node_list:
+        if i.is_input:
+            print(i.name[5:], end="")
+            if curlen != 2:
+                print(", ", end="")
+            curlen = curlen + 1
+
+print("] = ", line.strip())
+
+print("output [", end="")
+curlen = 0
     for i in node_list:
         if i.is_output:
-            print(i.name, " ", i.value)
+            print(i.name[5:], end="")
+            if curlen != 3:
+                print(", ", end="")
+            curlen = curlen + 1
 
-    print ("\n")
+print("] = ", end="")
+
+
+for i in node_list:
+    if i.is_output:
+        print(i.value, end="")
+    
+    print("\n\n")
     line = input("please input a value (return to exit): ")

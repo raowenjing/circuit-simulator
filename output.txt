@@ -1,4 +1,551 @@
-Calculating values for input: 000  wire_w: 0   wire_x: 0   wire_y: 0   wire_z: 1   
-Calculating values for input: 010  wire_w: 0   wire_x: 0   wire_y: 1   wire_z: 1   
-Calculating values for input: 001  wire_w: 0   wire_x: 1   wire_y: 0   wire_z: 1   
-Calculating values for input: 100  wire_w: 0   wire_x: 0   wire_y: 1   wire_z: 0   
+digraph G {
+
+    rankdir = LR
+    node [style = unfilled, imagescale = true, shape = box, fixedsize = true]
+    graph [splines = ortho]
+    edge [arrowtail = none]
+
+    1 [color = brown]
+    4 [color = brown]
+    8 [color = brown]
+    11 [color = brown]
+    14 [color = brown]
+    17 [color = brown]
+    21 [color = brown]
+    24 [color = brown]
+    27 [color = brown]
+    30 [color = brown]
+    34 [color = brown]
+    37 [color = brown]
+    40 [color = brown]
+    43 [color = brown]
+    47 [color = brown]
+    50 [color = brown]
+    53 [color = brown]
+    56 [color = brown]
+    60 [color = brown]
+    63 [color = brown]
+    66 [color = brown]
+    69 [color = brown]
+    73 [color = brown]
+    76 [color = brown]
+    79 [color = brown]
+    82 [color = brown]
+    86 [color = brown]
+    89 [color = brown]
+    92 [color = brown]
+    95 [color = brown]
+    99 [color = brown]
+    102 [color = brown]
+    105 [color = brown]
+    108 [color = brown]
+    112 [color = brown]
+    115 [color = brown]
+    118 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    119 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    122 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    123 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    126 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    127 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    130 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    131 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    134 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    135 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    138 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    139 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    142 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    143 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    146 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    147 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    150 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    151 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    154 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    157 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    158 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    159 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    162 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    165 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    168 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    171 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    174 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    177 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    180 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    183 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    184 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    185 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    186 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    187 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    188 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    189 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    190 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    191 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    192 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    193 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    194 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    195 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    196 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    197 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    198 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    199 [fontcolor = white, label = "", color = black, image = "./Gate_Image/and.png"]
+    203 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    213 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    223 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    224 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    227 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    230 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    233 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    236 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    239 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    242 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    243 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    246 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    247 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    250 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    251 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    254 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    255 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    256 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    257 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    258 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    259 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    260 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    263 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    264 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    267 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    270 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    273 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    276 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    279 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    282 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    285 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    288 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    289 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    290 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    291 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    292 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    293 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    294 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    295 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    296 [fontcolor = white, label = "", color = black, image = "./Gate_Image/and.png"]
+    300 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    301 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    302 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    303 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    304 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    305 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    306 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    307 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    308 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    309 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    319 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    329 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    330 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    331 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    332 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    333 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    334 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    335 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    336 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    337 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    338 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    339 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    340 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    341 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    342 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    343 [fontcolor = white, label = "", color = black, image = "./Gate_Image/xor.png"]
+    344 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    345 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    346 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    347 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    348 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    349 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    350 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    351 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    352 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    353 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    354 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    355 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    356 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    357 [fontcolor = white, label = "", color = black, image = "./Gate_Image/and.png"]
+    360 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    370 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    371 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    372 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    373 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    374 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    375 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    376 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    377 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    378 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    379 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    380 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    381 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    386 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    393 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    399 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    404 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    407 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    411 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    414 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    415 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    416 [fontcolor = white, label = "", color = black, image = "./Gate_Image/and.png"]
+    417 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    418 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    419 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    420 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    421 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nor.png"]
+    422 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    425 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    428 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    429 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    430 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    431 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+    432 [fontcolor = white, label = "", color = black, image = "./Gate_Image/nand.png"]
+
+    {rank = source; 1; 4; 8; 11; 14; 17; 21; 24; 27; 30; 34; 37; 40; 43; 47; 50; 53; 56; 60; 63; 66; 69; 73; 76; 79; 82; 86; 89; 92; 95; 99; 102; 105; 108; 112; 115}
+    1 -> 118
+    4 -> 119
+    11 -> 122
+    17 -> 123
+    24 -> 126
+    30 -> 127
+    37 -> 130
+    43 -> 131
+    50 -> 134
+    56 -> 135
+    63 -> 138
+    69 -> 139
+    76 -> 142
+    82 -> 143
+    89 -> 146
+    95 -> 147
+    102 -> 150
+    108 -> 151
+    118 -> 154
+    4 -> 154
+    8 -> 157
+    119 -> 157
+    14 -> 158
+    119 -> 158
+    122 -> 159
+    17 -> 159
+    126 -> 162
+    30 -> 162
+    130 -> 165
+    43 -> 165
+    134 -> 168
+    56 -> 168
+    138 -> 171
+    69 -> 171
+    142 -> 174
+    82 -> 174
+    146 -> 177
+    95 -> 177
+    150 -> 180
+    108 -> 180
+    21 -> 183
+    123 -> 183
+    27 -> 184
+    123 -> 184
+    34 -> 185
+    127 -> 185
+    40 -> 186
+    127 -> 186
+    47 -> 187
+    131 -> 187
+    53 -> 188
+    131 -> 188
+    60 -> 189
+    135 -> 189
+    66 -> 190
+    135 -> 190
+    73 -> 191
+    139 -> 191
+    79 -> 192
+    139 -> 192
+    86 -> 193
+    143 -> 193
+    92 -> 194
+    143 -> 194
+    99 -> 195
+    147 -> 195
+    105 -> 196
+    147 -> 196
+    112 -> 197
+    151 -> 197
+    115 -> 198
+    151 -> 198
+    154 -> 199
+    159 -> 199
+    162 -> 199
+    165 -> 199
+    168 -> 199
+    171 -> 199
+    174 -> 199
+    177 -> 199
+    180 -> 199
+    199 -> 203
+    199 -> 213
+    199 -> 223
+    203 -> 224
+    154 -> 224
+    203 -> 227
+    159 -> 227
+    203 -> 230
+    162 -> 230
+    203 -> 233
+    165 -> 233
+    203 -> 236
+    168 -> 236
+    203 -> 239
+    171 -> 239
+    1 -> 242
+    213 -> 242
+    203 -> 243
+    174 -> 243
+    213 -> 246
+    11 -> 246
+    203 -> 247
+    177 -> 247
+    213 -> 250
+    24 -> 250
+    203 -> 251
+    180 -> 251
+    213 -> 254
+    37 -> 254
+    213 -> 255
+    50 -> 255
+    213 -> 256
+    63 -> 256
+    213 -> 257
+    76 -> 257
+    213 -> 258
+    89 -> 258
+    213 -> 259
+    102 -> 259
+    224 -> 260
+    157 -> 260
+    224 -> 263
+    158 -> 263
+    227 -> 264
+    183 -> 264
+    230 -> 267
+    185 -> 267
+    233 -> 270
+    187 -> 270
+    236 -> 273
+    189 -> 273
+    239 -> 276
+    191 -> 276
+    243 -> 279
+    193 -> 279
+    247 -> 282
+    195 -> 282
+    251 -> 285
+    197 -> 285
+    227 -> 288
+    184 -> 288
+    230 -> 289
+    186 -> 289
+    233 -> 290
+    188 -> 290
+    236 -> 291
+    190 -> 291
+    239 -> 292
+    192 -> 292
+    243 -> 293
+    194 -> 293
+    247 -> 294
+    196 -> 294
+    251 -> 295
+    198 -> 295
+    260 -> 296
+    264 -> 296
+    267 -> 296
+    270 -> 296
+    273 -> 296
+    276 -> 296
+    279 -> 296
+    282 -> 296
+    285 -> 296
+    263 -> 300
+    288 -> 301
+    289 -> 302
+    290 -> 303
+    291 -> 304
+    292 -> 305
+    293 -> 306
+    294 -> 307
+    295 -> 308
+    296 -> 309
+    296 -> 319
+    296 -> 329
+    309 -> 330
+    260 -> 330
+    309 -> 331
+    264 -> 331
+    309 -> 332
+    267 -> 332
+    309 -> 333
+    270 -> 333
+    8 -> 334
+    319 -> 334
+    309 -> 335
+    273 -> 335
+    319 -> 336
+    21 -> 336
+    309 -> 337
+    276 -> 337
+    319 -> 338
+    34 -> 338
+    309 -> 339
+    279 -> 339
+    319 -> 340
+    47 -> 340
+    309 -> 341
+    282 -> 341
+    319 -> 342
+    60 -> 342
+    309 -> 343
+    285 -> 343
+    319 -> 344
+    73 -> 344
+    319 -> 345
+    86 -> 345
+    319 -> 346
+    99 -> 346
+    319 -> 347
+    112 -> 347
+    330 -> 348
+    300 -> 348
+    331 -> 349
+    301 -> 349
+    332 -> 350
+    302 -> 350
+    333 -> 351
+    303 -> 351
+    335 -> 352
+    304 -> 352
+    337 -> 353
+    305 -> 353
+    339 -> 354
+    306 -> 354
+    341 -> 355
+    307 -> 355
+    343 -> 356
+    308 -> 356
+    348 -> 357
+    349 -> 357
+    350 -> 357
+    351 -> 357
+    352 -> 357
+    353 -> 357
+    354 -> 357
+    355 -> 357
+    356 -> 357
+    357 -> 360
+    357 -> 370
+    14 -> 371
+    360 -> 371
+    360 -> 372
+    27 -> 372
+    360 -> 373
+    40 -> 373
+    360 -> 374
+    53 -> 374
+    360 -> 375
+    66 -> 375
+    360 -> 376
+    79 -> 376
+    360 -> 377
+    92 -> 377
+    360 -> 378
+    105 -> 378
+    360 -> 379
+    115 -> 379
+    4 -> 380
+    242 -> 380
+    334 -> 380
+    371 -> 380
+    246 -> 381
+    336 -> 381
+    372 -> 381
+    17 -> 381
+    250 -> 386
+    338 -> 386
+    373 -> 386
+    30 -> 386
+    254 -> 393
+    340 -> 393
+    374 -> 393
+    43 -> 393
+    255 -> 399
+    342 -> 399
+    375 -> 399
+    56 -> 399
+    256 -> 404
+    344 -> 404
+    376 -> 404
+    69 -> 404
+    257 -> 407
+    345 -> 407
+    377 -> 407
+    82 -> 407
+    258 -> 411
+    346 -> 411
+    378 -> 411
+    95 -> 411
+    259 -> 414
+    347 -> 414
+    379 -> 414
+    108 -> 414
+    380 -> 415
+    381 -> 416
+    386 -> 416
+    393 -> 416
+    399 -> 416
+    404 -> 416
+    407 -> 416
+    411 -> 416
+    414 -> 416
+    393 -> 417
+    404 -> 418
+    407 -> 419
+    411 -> 420
+    415 -> 421
+    416 -> 421
+    386 -> 422
+    417 -> 422
+    386 -> 425
+    393 -> 425
+    418 -> 425
+    399 -> 425
+    399 -> 428
+    393 -> 428
+    419 -> 428
+    386 -> 429
+    393 -> 429
+    407 -> 429
+    420 -> 429
+    381 -> 430
+    386 -> 430
+    422 -> 430
+    399 -> 430
+    381 -> 431
+    386 -> 431
+    425 -> 431
+    428 -> 431
+    381 -> 432
+    422 -> 432
+    425 -> 432
+    429 -> 432
+    223 -> O223
+    329 -> O329
+    370 -> O370
+    421 -> O421
+    430 -> O430
+    431 -> O431
+    432 -> O432
+
+    {rank = sink; O223; O329; O370; O421; O430; O431; O432} 
+ }
