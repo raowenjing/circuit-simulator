@@ -1,0 +1,55 @@
+digraph G {
+
+    rankdir = LR
+    node [style = unfilled, imagescale = true, shape = box, fixedsize = true]
+    graph [splines = ortho]
+    edge [arrowtail = none]
+
+    1 [color = brown]
+    2 [color = brown]
+    3 [color = brown]
+    4 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    5 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    6 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+    7 [fontcolor = white, label = "", color = black, image = "./Gate_Image/and.png"]
+    8 [fontcolor = white, label = "", color = black, image = "./Gate_Image/and.png"]
+    9 [fontcolor = white, label = "", color = black, image = "./Gate_Image/and.png"]
+    10 [fontcolor = white, label = "", color = black, image = "./Gate_Image/and.png"]
+    11 [fontcolor = white, label = "", color = black, image = "./Gate_Image/and.png"]
+    12 [fontcolor = white, label = "", color = black, image = "./Gate_Image/and.png"]
+    13 [fontcolor = white, label = "", color = black, image = "./Gate_Image/or.png"]
+    14 [fontcolor = white, label = "", color = black, image = "./Gate_Image/or.png"]
+    15 [fontcolor = white, label = "", color = black, image = "./Gate_Image/not.png"]
+
+    {rank = source; 1; 2; 3}
+    1 -> 4
+    2 -> 5
+    3 -> 6
+    1 -> 7
+    5 -> 7
+    4 -> 8
+    2 -> 8
+    3 -> 8
+    1 -> 9
+    2 -> 9
+    6 -> 9
+    5 -> 10
+    3 -> 10
+    2 -> 11
+    6 -> 11
+    1 -> 12
+    2 -> 12
+    3 -> 12
+    7 -> 13
+    8 -> 13
+    9 -> 13
+    10 -> 14
+    11 -> 14
+    3 -> 15
+    12 -> O12
+    13 -> O13
+    14 -> O14
+    15 -> O15
+
+    {rank = sink; O12; O13; O14; O15} 
+ }
