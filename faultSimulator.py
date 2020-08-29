@@ -187,11 +187,14 @@ def construct_nodelist():
 def order_nodelist():
     templist = node_list.copy()
     node_list.clear()
+
     # add all input
     for i in templist:
         if i.is_input:
             node_list.append(i)
-            templist.remove(i)
+
+    for i in node_list:
+        templist.remove(i)
 
     while len(templist) > 0:
         firstnode = templist[0]
@@ -228,7 +231,11 @@ file1 = open(circuitFile, "r")
 input_file_values = file1.readlines()
 file1.close()
 node_list = []
+output_list = []
 construct_nodelist()
+for i in node_list:
+    if i.is_output:
+        output_list.append(i)
 order_nodelist()
 # printing list of constructed nodes
 for n in node_list:
@@ -248,6 +255,7 @@ while True:
     # Set value of input node
     for node in node_list:
         if node.is_input:
+            print (node.name)
             if strindex > len(line_of_val) - 1:
                 break
             node.set_value(line_of_val[strindex])
@@ -259,9 +267,11 @@ while True:
         if node.is_input:
             node.display()
 
-    fault_node = input ("please input the name of the node with a fault:\n")
 
-    fault_value = input ("please input a value for the fault:\n")
+    fault_node = input ("please input the name of the node with a fault (if you do not want to input a fault, press enter):\n")
+
+    if not len(fault_node) == 0:
+        fault_value = input("please input a value for the fault:\n")
 
     for node in node_list:
         if node.name == fault_node:
@@ -286,11 +296,11 @@ while True:
     print("\t = \t", end="")
     print(*input_val)
 
-    output_list = [i.name for i in node_list if i.is_output]
-    output_val = [i.value for i in node_list if i.is_output]
+    output_name = [i.name for i in output_list]
+    output_val = [i.value for i in output_list]
 
     print("output:\t", end="")
-    print(*output_list, end="")
+    print(*output_name, end="")
     print("\t = \t", end="")
     print(*output_val)
 
